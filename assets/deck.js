@@ -177,7 +177,7 @@
   stage.addEventListener('click',e=>{ next(); });
   addEventListener('contextmenu',e=>{ e.preventDefault(); prev(); });
   let tx=null;
-  addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+  addEventListener('touchstart',e=>{tx=e.touches[0].clientX;document.body.classList.add('toque')},{passive:true});
   addEventListener('touchend',e=>{ if(tx===null) return; const dx=e.changedTouches[0].clientX-tx; if(Math.abs(dx)>50){ dx<0?next():prev(); } tx=null; });
   let mt; addEventListener('mousemove',()=>{document.body.classList.remove('cursor-off');clearTimeout(mt);mt=setTimeout(()=>document.body.classList.add('cursor-off'),2500)});
 

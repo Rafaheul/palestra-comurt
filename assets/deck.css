@@ -501,3 +501,7 @@ html.estatico *,html.estatico *::before,html.estatico *::after{animation-delay:-
 /* celular em pé */
 #gire{display:none;position:fixed;left:0;right:0;bottom:0;z-index:45;justify-content:center;padding:14px;font:15px var(--sans);color:#eee;background:rgba(0,0,0,.6);pointer-events:none}
 @media (orientation:portrait) and (max-width:900px){#gire{display:flex}}
+
+/* celular: sem dica de teclado */
+@media (pointer:coarse){#ajuda{display:none}}
+body.toque #ajuda{display:none}
