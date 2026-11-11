@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quem está decidindo o seu preço?</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="assets/deck.css">
+</head>
+<body>
+<!-- ícones (desenhados à mão, sem internet) -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="i-mente" viewBox="0 0 100 100"><path d="M34 92V74C20 66 14 54 16 40 19 22 34 10 52 10c20 0 34 14 34 32 0 8 4 12 6 16l-8 2v12c0 6-6 8-12 8H64v12"/><path d="M52 44a5 5 0 1 1 5 5 11 11 0 1 1-11-11 17 17 0 1 1 17 17"/></symbol>
+    <symbol id="i-peso" viewBox="0 0 100 100"><rect x="12" y="32" width="66" height="38" rx="6"/><path d="M78 44h8v14h-8"/><rect x="19" y="39" width="12" height="24" fill="currentColor" stroke="none" opacity=".8"/></symbol>
+    <symbol id="i-loop" viewBox="0 0 100 100"><path d="M82 50a32 32 0 1 1-14-26"/><path d="M58 12l12 12-14 8"/></symbol>
+    <symbol id="i-casa" viewBox="0 0 100 100"><path d="M12 50 50 16l38 34M24 40v48h52V40"/><path d="M42 88V64h16v24"/><path d="M30 8c4 6-4 8 0 14M50 4c4 6-4 8 0 14" opacity=".6"/></symbol>
+    <symbol id="i-ar" viewBox="0 0 100 100"><path d="M10 40h52a12 12 0 1 0-12-12M10 58h70a10 10 0 1 1-10 10M10 76h34"/></symbol>
+    <symbol id="i-moeda" viewBox="0 0 100 100"><ellipse cx="50" cy="30" rx="32" ry="12"/><path d="M18 30v14c0 7 14 12 32 12s32-5 32-12V30M18 44v14c0 7 14 12 32 12s32-5 32-12V44M18 58v14c0 7 14 12 32 12s32-5 32-12V58"/></symbol>
+    <symbol id="i-limite" viewBox="0 0 100 100"><circle cx="50" cy="50" r="38" stroke-dasharray="6 6"/><circle cx="50" cy="50" r="18"/><circle cx="50" cy="50" r="4" fill="currentColor"/></symbol>
+    <symbol id="i-livros" viewBox="0 0 100 100"><rect x="16" y="68" width="68" height="16" rx="3"/><rect x="22" y="50" width="60" height="16" rx="3"/><rect x="12" y="32" width="64" height="16" rx="3"/><rect x="26" y="14" width="56" height="16" rx="3"/></symbol>
+    <symbol id="i-olho" viewBox="0 0 100 100"><path d="M6 50Q50 8 94 50 50 92 6 50Z"/><circle cx="50" cy="50" r="13"/><circle cx="50" cy="50" r="4" fill="currentColor"/></symbol>
+    <symbol id="i-pendulo" viewBox="0 0 100 100"><path d="M50 4v52"/><path d="M50 56 37 70l13 24 13-24Z"/><path d="M20 96h60" opacity=".5"/></symbol>
+    <symbol id="i-espiral" viewBox="0 0 100 100"><path d="M50 50a4 4 0 0 1 8 0 8 8 0 0 1-16 0 12 12 0 0 1 24 0 16 16 0 0 1-32 0 20 20 0 0 1 40 0 24 24 0 0 1-48 0 28 28 0 0 1 56 0 32 32 0 0 1-64 0"/></symbol>
+    <symbol id="i-chama" viewBox="0 0 100 100"><path d="M50 92C26 92 20 64 34 46c2 14 12 16 12 16-6-20 4-38 14-50 0 18 20 28 20 52 0 18-12 28-30 28Z"/><path d="M50 92c-8 0-12-8-8-16 4 4 8 4 8 4 0-8 4-14 8-18 2 10 6 14 6 20 0 6-6 10-14 10Z"/></symbol>
+    <symbol id="i-sil" viewBox="0 0 200 500"><circle cx="100" cy="52" r="34"/><path d="M88 84h24v14H88z"/><path d="M62 98q38-12 76 0l20 14q10 10 12 30l8 112q1 12-9 13l-8-1-12-104h-5l2 110-4 30 8 168q0 12-12 12h-10l-14-162-10-12-10 12-14 162H70q-12 0-12-12l8-168-4-30 2-110h-5l-12 104-8 1q-10-1-9-13l8-112q2-20 12-30Z"/></symbol>
+  </defs>
+</svg>
+
+<div id="viewport"><div id="stage">
+<canvas id="field"></canvas>
+<div id="vinheta"></div>
+<div id="parte"></div>
+<div id="progress"></div>
+
+<!-- =====================================================
+     ABERTURA
+     ===================================================== -->
+<section class="slide" data-theme="papel" data-field="luz" data-trans="fade" data-part="">
+  <svg class="anel" viewBox="0 0 820 820"><g fill="none" stroke="#A18753" stroke-width="1.4">
+    <circle cx="410" cy="410" r="380" opacity=".6"/>
+    <path d="M410.0 30.0 L574.9 752.4 L112.9 173.1 L780.5 494.6 L39.5 494.6 L707.1 173.1 L245.1 752.4 Z" opacity=".55"/>
+  </g><g fill="#A18753"><circle cx="410" cy="30" r="9"/><circle cx="707.1" cy="173.1" r="9"/><circle cx="780.5" cy="494.6" r="9"/><circle cx="574.9" cy="752.4" r="9"/><circle cx="245.1" cy="752.4" r="9"/><circle cx="39.5" cy="494.6" r="9"/><circle cx="112.9" cy="173.1" r="9"/></g></svg>
+  <svg class="anel anel2" viewBox="0 0 820 820"><g fill="none" stroke="#6A343D" stroke-width="1.2"><circle cx="410" cy="410" r="380"/><path d="M410.0 30.0 L780.5 494.6 L245.1 752.4 L112.9 173.1 L707.1 173.1 L574.9 752.4 L39.5 494.6 Z"/></g></svg>
+  <div class="center" style="position:relative">
+    <div class="kicker e-fade" style="--d:.3s">COMURT Diamante</div>
+    <h1 class="split big" style="--d:.8s;margin-top:30px">Quem está decidindo<br>o seu <em>preço</em>?</h1>
+    <div class="linha e-zoom" style="--d:2.2s"></div>
+    <div class="lead e-up" style="--d:2.5s;font-style:italic">Do campo ao comportamento</div>
+    <div class="nomes e-up" style="--d:3.1s"><span>Claudia</span><span class="sep"></span><span>Yasnnajára Alves</span></div>
+  </div>
+  <aside class="notes"><b>Capa (fica na tela enquanto o público se acomoda).</b> O título é pergunta de propósito: a Claudia responde "o quê" (o que se acumula no campo) e a Yasnnajára responde "quem" (qual capacidade, na sombra, continua alimentando). As duas falam, em uníssono ou uma de cada vez: "Boa noite. Hoje a gente vai fazer uma pergunta só."</aside>
+</section>
+
+<!-- =====================================================
+     PARTE 1 — CLAUDIA · O CAMPO
+     ===================================================== -->
+<section class="slide" data-theme="papel" data-field="rosa" data-trans="zoom" data-part="O campo">
+  <div class="respira"></div>
+  <div class="center" style="position:relative">
+    <h1 class="split giant" style="--d:.6s">Feche os olhos.</h1>
+    <p class="lead step split" style="margin-top:50px;font-style:italic;--sd:.1s">Pense, com carinho, em alguém que você ama.</p>
+  </div>
+  <aside class="notes"><b>⏱ 0:40 · Claudia.</b> Experiência de 15 segundos. "Fechem os olhos e pensem, com carinho, em alguém que vocês amam. Só isso, por alguns segundos." <b>Clique</b> para a segunda frase aparecer enquanto elas estão de olhos fechados (ninguém vê, mas quem abrir antes vê). Conte 10 segundos em silêncio. A luz rosa respira no ritmo de uma respiração lenta: dá para respirar junto.</aside>
+</section>
+
+<section class="slide" data-theme="noite" data-field="rosa" data-trans="iris" data-part="O campo">
+  <div class="abs voa" style="left:160px;top:290px;width:900px"><img src="assets/img/fig12-paz-protecao.jpg" class="figura-blend e-blur" style="width:900px;--d:.4s" alt=""></div>
+  <div class="pessoa"><div class="halo"></div><svg viewBox="0 0 200 500" style="width:150px;fill:rgba(248,245,238,.85)"><use href="#i-sil"/></svg></div>
+  <div class="abs" style="left:110px;top:90px;width:1100px">
+    <div class="kicker e-fade" style="--d:.2s">Podem abrir</div>
+    <h2 class="split" style="--d:1.2s;margin-top:16px">Você acabou de criar<br>uma <em>forma-pensamento</em>.</h2>
+  </div>
+  <i class="step ghost" data-add="voou"></i>
+  <div class="credit">Besant e Leadbeater, <i>Formas de Pensamento</i> (1901), fig. 12 · Paz e proteção</div>
+  <aside class="notes"><b>⏱ 0:40 · Claudia.</b> "Podem abrir. Segundo Annie Besant e Leadbeater, vocês acabaram de criar uma forma-pensamento." <b>Clique:</b> a forma voa até a pessoa e acende um halo nela. "Ela já está a caminho dessa pessoa e vai ficar no campo dela como uma espécie de anjo da guarda." A figura é a original do livro de 1901 (fig. 12, "Paz e proteção").</aside>
+</section>
+
+<section class="slide" data-theme="noite" data-field="neutro" data-trans="rise" data-part="O campo">
+  <div class="abs" style="left:110px;top:110px"><h2 class="split" style="--d:.3s">E se vale para o amor…<br><span class="gold">vale também para</span></h2></div>
+  <div class="abs" style="left:110px;right:110px;top:430px;display:flex;justify-content:space-around">
+    <div class="step s-zoom"><div class="blob b-medo">o medo</div></div>
+    <div class="step s-zoom"><div class="blob b-magoa">a mágoa</div></div>
+    <div class="step s-zoom"><div class="blob b-raiva">a raiva</div></div>
+  </div>
+  <aside class="notes"><b>⏱ 0:30 · Claudia.</b> "E se isso vale para o amor, vale também para…" <b>3 cliques:</b> o medo, a mágoa, a raiva (a raiva entra tremendo, em forma de espinho). "…que pensamos todos os dias."</aside>
+</section>
+
+<section class="slide" data-theme="abismo" data-field="nada" data-trans="fade" data-part="O campo">
+  <div class="jaula2"></div>
+  <div class="citacao">
+    <p class="step s-fade" data-add="abre"><span class="aspa">“</span>Cada homem viaja pelo espaço preso em uma jaula construída por ele mesmo, cercado por uma massa de formas criadas por seus pensamentos habituais. (…)</p>
+    <p class="step s-fade">Até o homem aprender a ter controle completo do pensamento e do sentimento, ele não vê nada como realmente é, pois todas as suas observações devem ser feitas por esse meio, que distorce e colore tudo como óculos malfeitos.”</p>
+    <div class="fonte step s-fade">Besant e Leadbeater, <i>Formas de Pensamento</i> (1901)</div>
+  </div>
+  <aside class="notes"><b>⏱ 1:00 · Claudia.</b> A imagem abre bem perto da mulher dentro da jaula, e a câmera se move devagar. <b>Clique 1:</b> a câmera se afasta (5 s) e a primeira parte da citação aparece à direita: leia devagar, junto com o público. <b>Clique 2:</b> a segunda parte, até "…como óculos malfeitos". <b>Clique 3:</b> a fonte. Pausa. ("Homem" na citação de 1901 quer dizer o ser humano; a imagem mostra uma mulher de propósito, porque a plateia é de mulheres.)</aside>
+</section>
+
+<section class="slide" data-theme="noite" data-field="neutro" data-trans="zoom" data-part="O campo">
+  <div class="kicker e-fade" style="--d:.2s">Todo pensamento faz duas coisas</div>
+  <div class="abs" style="left:110px;right:110px;top:200px;display:flex;justify-content:space-around;align-items:center">
+    <div style="text-align:center;--d:.6s" class="e-up">
+      <div class="ondas"><div class="pedra"></div><span style="--k:0"></span><span style="--k:1"></span><span style="--k:2"></span><span style="--k:3"></span></div>
+      <h2 style="margin-top:20px">Vibra</h2>
+    </div>
+    <div style="text-align:center" class="step s-fade">
+      <svg class="corpo-forma" viewBox="0 0 440 440">
+        <path class="preench" d="M220 70c60 0 80 50 120 60s60 70 20 110-20 110-90 110-90-40-130-60-70-90-30-130 50-90 110-90Z" fill="rgba(217,195,143,.2)" stroke="none"/>
+        <path d="M220 70c60 0 80 50 120 60s60 70 20 110-20 110-90 110-90-40-130-60-70-90-30-130 50-90 110-90Z"/>
+      </svg>
+      <h2 style="margin-top:20px">Ganha <em>corpo</em></h2>
+    </div>
+  </div>
+  <aside class="notes"><b>⏱ 0:50 · Claudia.</b> "Para esses autores, todo pensamento faz duas coisas. Ele vibra, como uma pedra jogada na água que espalha ondas." <b>Clique:</b> "E ele ganha um corpo próprio, feito de matéria sutil, que eles chamam de 'entidade vivente'. Durante algum tempo, essa forma existe por conta própria, carregando a intenção de quem a criou."</aside>
+</section>
+
+<section class="slide" data-theme="noite" data-field="neutro" data-trans="rise" data-part="O campo">
+  <div class="kicker e-fade">Três regras dos clarividentes</div>
+  <div class="tres">
+    <div class="col step">
+      <div class="orbes">
+        <div><div class="orbe" style="--k:0;background:radial-gradient(circle at 35% 30%,#ffe3ec,#e58fae);box-shadow:0 0 40px #e58fae"></div><span class="orbe-l">amor</span></div>
+        <div><div class="orbe" style="--k:1;background:radial-gradient(circle at 35% 30%,#dbe8ff,#5d87d6);box-shadow:0 0 40px #5d87d6"></div><span class="orbe-l">devoção</span></div>
+        <div><div class="orbe" style="--k:2;background:radial-gradient(circle at 35% 30%,#fff7cf,#e2c23c);box-shadow:0 0 40px #e2c23c"></div><span class="orbe-l">intelecto</span></div>
+        <div><div class="orbe" style="--k:3;background:radial-gradient(circle at 35% 30%,#ffb3a3,#c8281c);box-shadow:0 0 40px #c8281c"></div><span class="orbe-l">raiva</span></div>
+        <div><div class="orbe" style="--k:4;background:radial-gradient(circle at 35% 30%,#a59a87,#5d5446)"></div><span class="orbe-l">egoísmo</span></div>
+        <div><div class="orbe" style="--k:5;background:radial-gradient(circle at 35% 30%,#e4e4e0,#9d9e98)"></div><span class="orbe-l">medo</span></div>
+      </div>
+      <h3>Qualidade → <em>cor</em></h3>
+    </div>
+    <div class="col step">
+      <div class="formas3">
+        <svg viewBox="0 0 120 200"><g class="envolve" fill="none" stroke="#e58fae" stroke-width="4"><path d="M60 60c-40 0-50 40-30 70s60 30 60 0-30-70-30-70Z" opacity=".5"/><circle cx="60" cy="110" r="22" fill="rgba(229,143,174,.3)"/><path d="M20 100c-10 30 20 70 40 70s50-40 40-70" /></g><text x="60" y="198" text-anchor="middle" fill="#c9c2b2" font-family="Segoe UI,Arial" font-size="15">envolve</text></svg>
+        <svg viewBox="0 0 120 200"><g class="sobe" fill="#5d87d6"><path d="M60 40 40 110h40Z" opacity=".85"/><path d="M60 70 30 140h60Z" opacity=".5"/></g><text x="60" y="198" text-anchor="middle" fill="#c9c2b2" font-family="Segoe UI,Arial" font-size="15">sobe</text></svg>
+        <svg viewBox="0 0 120 200"><g class="flecha" stroke="#c8281c" stroke-width="5" fill="#c8281c"><path d="M0 100h90"/><path d="M110 100 86 88v24Z"/><path d="M10 80l20 20-20 20" fill="none"/></g><text x="60" y="198" text-anchor="middle" fill="#c9c2b2" font-family="Segoe UI,Arial" font-size="15">atira</text></svg>
+      </div>
+      <h3>Natureza → <em>forma</em></h3>
+    </div>
+    <div class="col step">
+      <div class="contornos"><div class="nitida"></div><div class="borrada"></div></div>
+      <h3>Clareza → <em>contorno</em></h3>
+    </div>
+  </div>
+  <div class="credit">Segundo Besant e Leadbeater, <i>Formas de Pensamento</i> (1901)</div>
+  <aside class="notes"><b>⏱ 1:00 · Claudia.</b> "Os clarividentes descreviam essas formas com três regras simples." <b>Clique 1:</b> "A qualidade do pensamento dá a cor. O amor aparece rosado, a devoção azul, o intelecto amarelo. A raiva surge como clarões vermelhos, o egoísmo marrom acinzentado, o medo cinza pálido." <b>Clique 2:</b> "A natureza dá o formato. A proteção envolve, a devoção sobe, a raiva é lançada como flecha." <b>Clique 3:</b> "A clareza dá o contorno. Ideia firme tem borda nítida; ideia confusa vira nuvem borrada."</aside>
+</section>
+
+<section class="slide" data-theme="noite" data-field="neutro" data-trans="wipe" data-part="O campo">
+  <div class="kicker e-fade">No campo, elas se dividem assim</div>
+  <div class="quatro">
+    <div class="quad q-pos step" data-dots="16" data-tipo="pos"><h3>Positivas</h3></div>
+    <div class="quad q-neu step" data-dots="26" data-tipo="neu"><h3>Neutras</h3></div>
+    <div class="quad q-neg step" data-dots="7" data-tipo="neg"><h3>Negativas</h3></div>
+    <div class="quad q-egr step" data-dots="40" data-tipo="egr"><div class="nucleo"></div><h3>Egrégoras</h3></div>
+  </div>
+  <aside class="notes"><b>⏱ 1:00 · Claudia.</b> Um clique por quadro. <b>Positivas:</b> cores suaves, harmonia; gravitam ao redor e facilitam sincronicidades. <b>Neutras:</b> repetitivas e automáticas, a música chiclete que fica em loop; viram uma nuvem de dispersão. <b>Negativas:</b> raiva, ódio, ciúme, julgamento; esferas densas, viscosas, escuras. <b>Egrégoras:</b> quando muitas pessoas mantêm o mesmo foco, as formas se fundem numa estrutura coletiva de grande potência (os pontinhos convergem para o centro).</aside>
+</section>
+
+<section class="slide" data-theme="noite" data-field="neutro" data-trans="fade" data-part="O campo">
+  <div class="abs" style="left:110px;top:110px;width:1300px">
+    <h2 class="split" style="--d:.3s">A pergunta não é <em>se</em> criamos formas.</h2>
+    <h2 class="step split gold" style="margin-top:22px">É quais. E quantas vezes por dia.</h2>
+  </div>
+  <div class="step s-fade" style="position:absolute;inset:0;pointer-events:none">
+    <div class="tf seq" style="left:150px;top:420px;--d:.2s">vão achar caro</div>
+    <div class="tf seq" style="left:640px;top:360px;--d:.7s">vão achar caro</div>
+    <div class="tf seq" style="left:1060px;top:450px;--d:1.1s">vão achar caro</div>
+    <div class="tf seq" style="left:330px;top:560px;--d:1.4s">vão achar caro</div>
+    <div class="tf seq" style="left:840px;top:590px;--d:1.65s">vão achar caro</div>
+    <div class="tf seq" style="left:80px;top:690px;--d:1.85s">vão achar caro</div>
+    <div class="tf seq" style="left:560px;top:720px;--d:2s">vão achar caro</div>
+    <div class="tf seq" style="left:1150px;top:700px;--d:2.15s">vão achar caro</div>
+    <div class="tf seq" style="left:1000px;top:300px;--d:2.3s">vão achar caro</div>
+    <div class="tf seq" style="left:420px;top:330px;--d:2.4s">vão achar caro</div>
+    <div class="tf seq" style="left:1240px;top:560px;--d:2.5s">vão achar caro</div>
+    <div class="tf seq" style="left:260px;top:780px;--d:2.6s">vão achar caro</div>
+  </div>
+  <aside class="notes"><b>⏱ 0:30 · Claudia.</b> "Então a pergunta não é se criamos formas. Criamos o tempo todo." <b>Clique:</b> "A pergunta é: que formas estamos criando, e quantas vezes por dia?" <b>Clique:</b> a mesma frase de consultório ("vão achar caro") se multiplica pela tela. Deixe acontecer em silêncio: é a ponte para a repetição.</aside>
+</section>
+
+<section class="slide" data-theme="noite" data-field="denso" data-trans="sink" data-part="O campo">
+  <div class="escuro"></div>
+  <div class="kicker e-fade">Da forma-pensamento ao parasita</div>
+  <h2 class="split" style="--d:.4s;margin-top:14px">A escala de <em>densidade</em></h2>
+  <div class="escala">
+    <div class="st step"><div class="ic"><div class="faisca"></div></div><h3>Pensamento repetido</h3><div class="sub">a ideia</div><div class="seta">→</div></div>
+    <div class="st step" data-add="d2"><div class="ic"><div class="nuvem-c"></div></div><h3>Forma-pensamento</h3><div class="sub">o molde</div><div class="seta">→</div></div>
+    <div class="st step" data-add="d3" data-field="lodo"><div class="ic"><div class="poca"></div></div><h3>Miasma</h3><div class="sub">o lodo</div><div class="seta">→</div></div>
+    <div class="st step" data-add="d4"><div class="ic"><img src="assets/img/fig29-vicio.jpg" style="width:230px;mix-blend-mode:screen;border-radius:14px;animation:pulsa 3s ease-in-out infinite" alt=""></div><h3>Larva astral</h3><div class="sub">o parasita</div></div>
+  </div>
+  <aside class="notes"><b>⏱ 1:00 · Claudia.</b> "Hoje vamos mostrar as três principais formas que produzimos e como elas se comportam. Pense numa escala de densidade e autonomia." Um clique por estação; a tela vai escurecendo para a direita. <b>Forma-pensamento</b> é o molde. <b>Miasma</b> é o lodo, a alteração no tecido sutil. <b>Larva</b> é o organismo que nasce nesse meio. Fontes desta parte: literatura teosófica, apometria e obras espíritas/espiritualistas.</aside>
+</section>
+
+<section class="slide" data-theme="noite" data-field="denso" data-trans="zoom" data-part="O campo">
+  <div class="abs" style="left:110px;top:120px;width:620px">
+    <div class="kicker e-fade">1 · Forma-pensamento</div>
+    <h2 class="split" style="--d:.4s;margin-top:16px">O <em>tijolo</em>.<br>A semente.</h2>
+    <p class="lead e-up" style="--d:1.6s;margin-top:40px">Vive enquanto recebe atenção.</p>
+    <p class="lead step split gold" style="font-style:italic;margin-top:10px">Parou de alimentar, ela se dissolve.</p>
+  </div>
+  <div class="abs" style="right:110px;top:220px">
+    <div class="alimenta" data-dots="22" data-tipo="gota"><div class="forma"></div></div>
+  </div>
+  <i class="step ghost" data-add="parou"></i>
+  <aside class="notes"><b>⏱ 0:50 · Claudia.</b> Ideoplastia: o pensamento repetido e alimentado por foco cria uma estrutura semipermanente no campo ou no ambiente. Os pontinhos dourados que entram na forma são a atenção. <b>Ponto-chave para a ponte com a Yasnnajára:</b> "Elas não se alimentam sozinhas. A duração depende da carga psíquica de quem criou ou de quem sintoniza." <b>Clique:</b> a frase. <b>Clique:</b> a alimentação para e a forma se desfaz na frente do público.</aside>
+</section>
+
+<section class="slide" data-theme="abismo" data-field="lodo" data-trans="sink" data-part="O campo">
+  <div style="position:absolute;inset:0;overflow:hidden" data-dots="28" data-tipo="gotejo"></div>
+  <svg class="miasma-svg" viewBox="0 0 1600 900" preserveAspectRatio="none" style="opacity:.55">
+    <filter id="lodoF"><feTurbulence type="fractalNoise" baseFrequency="0.006 0.012" numOctaves="3" seed="4"><animate attributeName="baseFrequency" dur="18s" values="0.006 0.012;0.009 0.016;0.006 0.012" repeatCount="indefinite"/></feTurbulence><feColorMatrix values="0 0 0 0 0.16  0 0 0 0 0.14  0 0 0 0 0.09  0 0 0 1.6 -0.55"/></filter>
+    <rect width="1600" height="900" filter="url(#lodoF)"/>
+  </svg>
+  <div class="abs" style="left:110px;top:120px">
+    <div class="kicker e-fade">2 · Miasma</div>
+    <h2 class="split" style="--d:.4s;margin-top:16px">O <em>lodo</em>.</h2>
+    <p class="lead e-up" style="--d:1.2s;margin-top:30px">Gruda no campo e no ambiente.</p>
+  </div>
+  <div class="abs icones3" style="left:110px;top:520px">
+    <div class="ic step"><svg><use href="#i-casa"/></svg><div class="rot">casa, móveis</div></div>
+    <div class="ic step"><svg><use href="#i-ar"/></svg><div class="rot">peso no ar</div></div>
+    <div class="ic step"><svg><use href="#i-peso"/></svg><div class="rot">cansaço sem motivo</div></div>
+  </div>
+  <aside class="notes"><b>⏱ 0:50 · Claudia.</b> O termo vem da medicina antiga e da homeopatia (Hahnemann), adaptado à bioenergia. Nasce do acúmulo prolongado de sentimentos desarmônicos: ressentimento, mágoa guardada, amargura. É inanimado: poluição, "lodo" fluídico. <b>3 cliques:</b> impregna casa e móveis · deixa o ar pesado · cansaço sem motivo. <b>Cuidado de palco:</b> não afirmar que miasma causa doença física (nódulos, inflamação): numa palestra aberta isso vira promessa de saúde. Fique em "peso, cansaço, sair do atendimento esgotada".</aside>
+</section>
+
+<section class="slide" data-theme="abismo" data-field="lodo" data-trans="zoom" data-part="O campo">
+  <div class="larva-wrap"><img src="assets/img/fig29-vicio.jpg" class="larva-img figura-blend e-blur" style="--d:.3s" alt=""></div>
+  <div class="abs" style="left:110px;top:140px;width:640px">
+    <div class="kicker e-fade">3 · Larva astral</div>
+    <h2 class="split" style="--d:.4s;margin-top:16px">O <em>parasita</em>.</h2>
+    <p class="lead step" style="margin-top:40px">Nasce onde há lodo e alimento.</p>
+    <p class="lead step">Pede mais do mesmo.</p>
+    <p class="lead step gold" style="font-style:italic">“Eu sei que não devia… mas faço.”</p>
+  </div>
+  <div class="credit">Besant e Leadbeater, <i>Formas de Pensamento</i> (1901), fig. 29</div>
+  <aside class="notes"><b>⏱ 0:50 · Claudia.</b> Agregados de matéria astral densa com uma vitalidade rudimentar: sem inteligência, só instinto de preservação e apetite. Formas que lembram amebas, polvos, carrapatos. <b>Cliques:</b> nasce do excesso de miasma + emoção passional contínua · se fixa nos chakras mais permeáveis e estimula a pessoa a sentir de novo a emoção que a alimenta · o ciclo do "eu sei que não devia, mas faço". (A figura é a fig. 29 do livro de 1901.)</aside>
+</section>
+
+<section class="slide" data-theme="abismo" data-field="lodo" data-trans="iris" data-part="O campo">
+  <div class="kicker e-fade">O ciclo</div>
+  <div class="ciclo">
+    <div class="trilho"></div><div class="viajante"></div>
+    <div class="no e-pop" style="--d:.4s;left:195px;top:-40px"><div class="c" style="background:radial-gradient(circle,#fff6dc,#d9c38f 60%,transparent 72%)"></div>pensamento</div>
+    <div class="no e-pop" style="--d:.9s;right:-70px;top:360px"><div class="c" style="background:radial-gradient(ellipse,#5b5440,#2b2820 70%)"></div>miasma</div>
+    <div class="no e-pop" style="--d:1.4s;left:-70px;top:360px"><div class="c"><img src="assets/img/fig29-vicio.jpg" style="width:110px;mix-blend-mode:screen;border-radius:50%" alt=""></div>larva</div>
+    <div class="meio step">a larva pede<br>mais pensamento<br>e deixa mais lodo</div>
+  </div>
+  <aside class="notes"><b>⏱ 0:50 · Claudia.</b> A comparação do palestrante: um ambiente com restos de comida (miasma e formas-pensamento) atrai baratas (larvas). Instalada, a larva suga vitalidade, incita mais raiva, medo ou compulsão para continuar se alimentando, e os resíduos dela viram mais miasma. <b>Clique:</b> o texto do centro fecha o ciclo.</aside>
+</section>
+
+<section class="slide" data-theme="noite" data-field="lodo" data-trans="fade" data-part="O campo">
+  <div class="center">
+    <h2 class="split" style="--d:.3s">Miasma <em>não</em> vira larva<br>obrigatoriamente.</h2>
+    <h1 class="step split gold" style="margin-top:50px" data-field="limpo">Limpo a tempo, dissolve.</h1>
+  </div>
+  <aside class="notes"><b>⏱ 0:30 · Claudia.</b> "Se a pessoa só teve um dia ruim, o miasma pode se dissipar naturalmente, com uma faxina física e energética, antes de virar larva. Para virar larva precisa de saturação contínua." <b>Clique:</b> o campo da tela muda de lodo para partículas douradas subindo. É a primeira virada de esperança da palestra.</aside>
+</section>
+
+<section class="slide" data-theme="noite" data-field="neutro" data-trans="rise" data-part="O campo">
+  <div class="kicker e-fade">Como aparece no consultório</div>
+  <div class="sinais">
+    <div class="sinal step"><svg><use href="#i-mente"/></svg><div class="q">“Vão achar caro.”</div><div class="t">Mente · ruminação</div></div>
+    <div class="sinal step"><svg><use href="#i-peso"/></svg><div class="q">“Saio do atendimento esgotada.”</div><div class="t">Corpo · peso</div></div>
+    <div class="sinal step"><svg><use href="#i-loop"/></svg><div class="q">“Sei que não devia, mas faço.”</div><div class="t">Impulso · compulsão</div></div>
+  </div>
+  <aside class="notes"><b>⏱ 0:50 · Claudia.</b> Os sinais vão do mais sutil ao mais físico, acompanhando a escala. <b>Forma-pensamento:</b> a mesma frase volta sempre ("não sou boa o suficiente", "vão achar caro"); reações automáticas que nasceram na infância (Brennan). <b>Miasma:</b> peso, estagnação, os chakras perdem a capacidade de troca, a terapeuta que sai esgotada. <b>Larva:</b> vontade que não passa, energia que vaza.</aside>
+</section>
+
+<section class="slide" data-theme="noite" data-field="neutro" data-trans="zoom" data-part="O campo">
+  <div class="center" style="padding:0 60px">
+    <h2 class="split" style="--d:.3s;font-size:66px;line-height:1.2">A crença limitante é a forma-pensamento que a gente repetiu tantas vezes que deixou de parecer <em>pensamento</em> e passou a parecer <em>verdade</em>.</h2>
+    <h1 class="step split gold" style="margin-top:60px">Ela não grita. Ela decide.</h1>
+  </div>
+  <aside class="notes"><b>⏱ 0:40 · Claudia (frase para amarrar).</b> Leia devagar. <b>Clique:</b> "Ela não grita, ela decide por nós: na hora de cobrar, de dizer sim ou de se mostrar." Pausa longa. A Yasnnajára se aproxima.</aside>
+</section>
+
+<!-- =====================================================
+     PONTE — AS DUAS
+     ===================================================== -->
+<section class="slide" data-theme="noite" data-field="ouro" data-trans="fade" data-part="A ponte">
+  <div class="abs" style="left:110px;right:110px;top:70px;text-align:center">
+    <h2 class="split" style="--d:.3s;font-size:58px">Uma forma-pensamento só vive enquanto <em>alguém</em> a alimenta.</h2>
+    <h2 class="step split" style="margin-top:26px;font-size:66px">Então: <em>quem</em>, dentro de você, está alimentando?</h2>
+  </div>
+  <div class="fila7 silhueta step s-fade" style="height:560px">
+    <div class="d"><img src="assets/deusas/atena-corpo.webp" style="height:480px" alt=""></div>
+    <div class="d"><img src="assets/deusas/artemis-corpo.webp" style="height:480px" alt=""></div>
+    <div class="d"><img src="assets/deusas/hestia-corpo.webp" style="height:480px" alt=""></div>
+    <div class="d"><img src="assets/deusas/hera-corpo.webp" style="height:480px" alt=""></div>
+    <div class="d"><img src="assets/deusas/demeter-corpo.webp" style="height:480px" alt=""></div>
+    <div class="d"><img src="assets/deusas/persefone-corpo.webp" style="height:480px" alt=""></div>
+    <div class="d"><img src="assets/deusas/afrodite-corpo.webp" style="height:480px" alt=""></div>
+  </div>
+  <aside class="notes"><b>⏱ 0:40 · AS DUAS. É aqui que a Claudia passa a palavra.</b> Claudia: "Uma forma-pensamento só vive enquanto alguém a alimenta." <b>Clique</b> (Yasnnajára, já ao lado dela): "Então a pergunta é: quem, dentro de você, está alimentando?" <b>Clique:</b> sete silhuetas douradas aparecem. Yasnnajára: "Quem está decidindo o seu preço."</aside>
+</section>
+
+<!-- =====================================================
+     PARTE 2 — YASNNAJÁRA · QUEM ALIMENTA
+     ===================================================== -->
+<section class="slide" data-theme="papel" data-field="luz" data-trans="iris" data-part="Quem alimenta">
+  <div class="abs" style="left:110px;top:60px">
+    <div class="kicker e-fade">Dentro de cada mulher</div>
+    <h2 class="split" style="--d:.4s;margin-top:10px">Sete <em>capacidades</em>.</h2>
+  </div>
+  <div class="fila7">
+    <div class="d e-drop" style="--d:.8s"><img src="assets/deusas/atena-corpo.webp" alt=""><div class="nome">Atena</div><div class="cap">estratégia</div></div>
+    <div class="d e-drop" style="--d:1.05s"><img src="assets/deusas/artemis-corpo.webp" alt=""><div class="nome">Ártemis</div><div class="cap">direção</div></div>
+    <div class="d e-drop" style="--d:1.3s"><img src="assets/deusas/hestia-corpo.webp" alt=""><div class="nome">Héstia</div><div class="cap">centro</div></div>
+    <div class="d e-drop" style="--d:1.55s"><img src="assets/deusas/hera-corpo.webp" alt=""><div class="nome">Hera</div><div class="cap">parceria</div></div>
+    <div class="d e-drop" style="--d:1.8s"><img src="assets/deusas/demeter-corpo.webp" alt=""><div class="nome">Deméter</div><div class="cap">cuidado</div></div>
+    <div class="d e-drop" style="--d:2.05s"><img src="assets/deusas/persefone-corpo.webp" alt=""><div class="nome">Perséfone</div><div class="cap">receptividade</div></div>
+    <div class="d e-drop" style="--d:2.3s"><img src="assets/deusas/afrodite-corpo.webp" alt=""><div class="nome">Afrodite</div><div class="cap">desejo e criação</div></div>
+  </div>
+  <div class="credit" style="left:auto;right:110px;top:84px;bottom:auto">As sete deusas: Jean Shinoda Bolen, <i>As Deusas e a Mulher</i> (1984)</div>
+  <aside class="notes"><b>⏱ 1:00 · Yasnnajára.</b> As sete aparecem uma a uma. "A psiquiatra junguiana Jean Shinoda Bolen organizou as sete deusas gregas como padrões que vivem em toda mulher. No Método das Deusas eu uso cada uma como o nome de uma capacidade." <b>Regra do método:</b> a deusa nomeia a capacidade, não é a identidade de ninguém. Nada de "eu sou Atena"; o certo é "hoje quem está no comando em mim é Atena".</aside>
+</section>
+
+<section class="slide" data-theme="papel" data-field="luz" data-trans="rise" data-part="Quem alimenta">
+  <div class="kicker e-fade">Três modos de existir</div>
+  <h2 class="split" style="--d:.3s;margin-top:10px">Três <em>eixos</em></h2>
+  <div class="eixos">
+    <div class="eixo e-up" style="--d:.7s"><div class="tit">Autonomia</div><div class="sub">ser inteira em si mesma</div>
+      <div class="imgs"><img src="assets/deusas/artemis-corpo.webp" alt=""><img src="assets/deusas/atena-corpo.webp" alt=""><img src="assets/deusas/hestia-corpo.webp" alt=""></div></div>
+    <div class="eixo e-up" style="--d:1.1s"><div class="tit">Vínculo</div><div class="sub">existir em relação</div>
+      <div class="imgs"><img src="assets/deusas/hera-corpo.webp" alt=""><img src="assets/deusas/demeter-corpo.webp" alt=""><img src="assets/deusas/persefone-corpo.webp" alt=""></div></div>
+    <div class="eixo e-up" style="--d:1.5s"><div class="tit">Transformação</div><div class="sub">muda o que toca</div>
+      <div class="imgs"><img src="assets/deusas/afrodite-corpo.webp" alt=""></div></div>
+  </div>
+  <aside class="notes"><b>⏱ 0:40 · Yasnnajára.</b> Os três grupos são da Bolen (virgens, vulneráveis e a alquímica); no método viraram eixos. Atalho que o público entende na hora: tudo aceso no Vínculo = a mulher que se dissolve nos outros; tudo aceso na Autonomia = a mulher blindada, que não pede e não recebe. Afrodite apagada nos dois casos: vida sem prazer e sem criação.</aside>
+</section>
+
+<section class="slide" data-theme="papel" data-field="luz" data-trans="zoom" data-part="Quem alimenta">
+  <div class="abs" style="left:110px;top:60px">
+    <div class="kicker e-fade">Cada capacidade pode estar</div>
+    <h2 class="split" style="--d:.3s;margin-top:10px">Na luz, ou na <em>sombra</em></h2>
+  </div>
+  <div class="lado e-fade" style="--d:.6s;left:110px;top:330px">☀ na luz</div>
+  <div class="lado e-fade" style="--d:.6s;left:110px;top:640px;color:var(--vinho)">● na sombra</div>
+  <div class="estados">
+    <div class="est integrada e-zoom" style="--d:.8s"><img src="assets/deusas/demeter-corpo.webp" alt=""><div class="rot"><small>usa e sabe parar</small>Integrada</div></div>
+    <div class="est disponivel e-zoom" style="--d:1.1s"><img src="assets/deusas/demeter-corpo.webp" alt=""><div class="rot"><small>pouca, mas acessível</small>Disponível</div></div>
+    <div class="est hiper step s-zoom"><img src="assets/deusas/demeter-corpo.webp" alt=""><div class="rot"><small>por excesso</small>Hiperativada</div></div>
+    <div class="est retraida step s-zoom"><img src="assets/deusas/demeter-corpo.webp" alt=""><div class="rot"><small>por escassez</small>Retraída</div></div>
+  </div>
+  <aside class="notes"><b>⏱ 1:00 · Yasnnajára.</b> Exemplo com Deméter (cuidado). Integrada: cuida e sabe parar. Disponível: cuida pouco hoje, mas consegue quando precisa, <b>e isso não é problema</b> (é o que evita rotular quem está bem). <b>Clique:</b> hiperativada, sombra por excesso: não consegue desligar o cuidado. <b>Clique:</b> retraída, sombra por escassez: não consegue cuidar nem de si. "O estado é da capacidade, não da pessoa."</aside>
+</section>
+
+<section class="slide" data-theme="papel" data-field="luz" data-trans="wipe" data-part="Quem alimenta">
+  <div class="radi-img"></div>
+  <div class="abs" style="left:1000px;top:110px;width:520px">
+    <div class="kicker e-fade" style="--d:.5s">Para nós, radiestesistas</div>
+    <h2 class="split" style="--d:.8s;margin-top:14px;font-size:66px">O trabalho que <em>não aparece</em>.</h2>
+    <p class="duvida step s-right">“Será que funciona?”</p>
+    <p class="duvida step s-right">“Será que vale?”</p>
+    <p class="lead step" style="font-size:31px;margin-top:34px">Quem não vê o resultado, duvida dele.<br>Quem duvida do resultado, <em>não cobra</em> por ele.</p>
+  </div>
+  <aside class="notes"><b>⏱ 0:50 · Yasnnajára.</b> "E para nós, radiestesistas, existe um agravante: o nosso trabalho não aparece numa foto." <b>Clique 1:</b> a dúvida que quase toda radiestesista já teve depois de um atendimento: "será que funciona?". <b>Clique 2:</b> a dúvida na hora de dizer o preço: "será que vale?". <b>Clique 3:</b> as duas têm a mesma raiz. "Quem não vê o resultado, duvida dele. Quem duvida do resultado, não cobra por ele." Gancho para o protocolo: é por isso que, no final, a medição do biômetro vem antes e depois da sessão.</aside>
+</section>
+
+<section class="slide" data-theme="papel" data-field="luz" data-trans="fade" data-part="Quem alimenta">
+  <div class="abs" style="left:110px;top:150px;width:780px">
+    <h1 class="split" style="--d:.3s">Toda sombra<br><em>protege</em> alguma coisa.</h1>
+    <p class="lead step" style="margin-top:50px;font-style:italic">“Isso funcionou.<br>Vamos ver se ainda funciona.”</p>
+  </div>
+  <svg class="escudo abs" style="right:180px;top:220px" viewBox="0 0 340 400">
+    <defs><radialGradient id="luzE"><stop offset="0" stop-color="#fff6dc"/><stop offset=".5" stop-color="#e6c98a" stop-opacity=".8"/><stop offset="1" stop-color="#d9c38f" stop-opacity="0"/></radialGradient></defs>
+    <circle class="luz" cx="170" cy="190" r="170" fill="url(#luzE)"/>
+    <path class="c" d="M170 20 300 70c0 150-40 250-130 310C80 320 40 220 40 70Z"/>
+  </svg>
+  <i class="step ghost" data-add="abre-escudo"></i>
+  <aside class="notes"><b>⏱ 0:40 · Yasnnajára.</b> O coração ético do método. O padrão não é defeito: ele protegeu você em algum momento. Sem isso, a palestra vira lista de defeitos e a plateia sai envergonhada. <b>Clique:</b> a frase de sessão. <b>Clique:</b> o escudo fica transparente e aparece a luz que ele guardava.</aside>
+</section>
+
+<section class="slide" data-theme="papel" data-field="luz" data-trans="zoom" data-part="Quem alimenta">
+  <svg class="etiqueta abs" style="left:150px;top:200px" viewBox="0 0 420 520">
+    <defs><radialGradient id="luzE2"><stop offset="0" stop-color="#fff6dc"/><stop offset=".55" stop-color="#e6c98a" stop-opacity=".7"/><stop offset="1" stop-color="#d9c38f" stop-opacity="0"/></radialGradient></defs>
+    <circle class="halo-e" cx="210" cy="260" r="210" fill="url(#luzE2)"/>
+    <path class="escudo2" d="M210 40 360 98c0 176-46 292-150 362C106 390 60 274 60 98Z"/>
+    <g class="tag"><path d="M150 170h150l40 90-40 90H150a20 20 0 0 1-20-20V190a20 20 0 0 1 20-20Z"/><circle cx="300" cy="260" r="14" fill="#F8F5EE"/><path d="M314 260c40 0 50-60 90-70" fill="none" stroke="#A18753" stroke-width="3"/></g>
+  </svg>
+  <div class="abs" style="left:700px;top:180px;width:800px">
+    <div class="kicker e-fade" style="--d:.2s">Uma sombra que muitas de nós conhecem</div>
+    <h1 class="split" style="--d:.5s;margin-top:18px;font-size:86px">Cobrar barato <em>protege</em>…</h1>
+    <h2 class="step split" style="margin-top:14px">…de ser cobrada pelo resultado.</h2>
+    <p class="lead step" style="margin-top:44px;font-style:italic">Preço baixo, expectativa baixa.<br>E a dúvida continua guardada.</p>
+  </div>
+  <i class="step ghost" data-add="encolhe"></i>
+  <aside class="notes"><b>⏱ 0:40 · Yasnnajára. HIPÓTESE: a Yasnnajára decide se mantém.</b> Exemplo concreto do slide anterior ("toda sombra protege alguma coisa"). Se eu não tenho certeza de que o meu trabalho funciona, um preço baixo baixa a expectativa da cliente: ela cobra menos de mim. O preço baixo vira escudo. <b>Clique 1:</b> "…de ser cobrada pelo resultado." <b>Clique 2:</b> "Preço baixo, expectativa baixa. E a dúvida continua guardada." <b>Clique 3:</b> a etiqueta de preço encolhe atrás do escudo. Ligação com os pilares: "E quem segura esse escudo? Depende de qual deusa está na sombra."</aside>
+</section>
+
+<section class="slide" data-theme="papel" data-field="luz" data-trans="rise" data-part="Quem alimenta">
+  <div class="kicker e-fade">As quatro dores da terapeuta</div>
+  <h2 class="split" style="--d:.3s;margin-top:10px">Cada dor tem uma deusa <em>na sombra</em></h2>
+  <div class="cartas">
+    <div class="carta e-up" style="--d:.6s"><div class="in">
+      <div class="fr"><span class="n">PILAR 1</span><svg><use href="#i-moeda"/></svg><h3>Merecimento</h3></div>
+      <div class="vs"><img src="assets/deusas/hestia-corpo.webp" alt=""><div class="lbl"><small>por excesso</small>Héstia</div></div></div></div>
+    <div class="carta e-up" style="--d:.8s"><div class="in">
+      <div class="fr"><span class="n">PILAR 2</span><svg><use href="#i-limite"/></svg><h3>Limites</h3></div>
+      <div class="vs"><img src="assets/deusas/demeter-corpo.webp" alt=""><div class="lbl"><small>por excesso</small>Deméter</div></div></div></div>
+    <div class="carta e-up" style="--d:1s"><div class="in">
+      <div class="fr"><span class="n">PILAR 3</span><svg><use href="#i-livros"/></svg><h3>Autoridade</h3></div>
+      <div class="vs"><img src="assets/deusas/atena-corpo.webp" alt=""><div class="lbl"><small>por excesso</small>Atena</div></div></div></div>
+    <div class="carta e-up" style="--d:1.2s"><div class="in">
+      <div class="fr"><span class="n">PILAR 4</span><svg><use href="#i-olho"/></svg><h3>Visibilidade</h3></div>
+      <div class="vs"><img src="assets/deusas/afrodite-corpo.webp" alt=""><div class="lbl"><small>por escassez</small>Afrodite</div></div></div></div>
+  </div>
+  <i class="step ghost" data-add="f1"></i><i class="step ghost" data-add="f2"></i><i class="step ghost" data-add="f3"></i><i class="step ghost" data-add="f4"></i>
+  <aside class="notes"><b>⏱ 0:50 · Yasnnajára.</b> Os 4 pilares são os mesmos do protocolo da Claudia: é aqui que as duas falas se encontram. Cada clique vira uma carta e mostra qual capacidade, na sombra, alimenta aquela dor. Os próximos 4 slides abrem uma carta de cada vez. <b>Para a Yasnnajára validar:</b> o par pilar × deusa é proposta, montada a partir do METODO.md.</aside>
+</section>
+
+<!-- Pilar 1 -->
+<section class="slide sombra-excesso" data-theme="papel" data-field="luz" data-trans="wipe" data-part="Pilar 1 · Merecimento">
+  <div class="pilar">
+    <img class="deusa e-left" style="--d:.3s" src="assets/deusas/hestia-corpo.webp" alt="">
+    <div class="cab"><div class="kicker e-fade">Pilar 1 · Merecimento</div></div>
+    <div class="papelzinho"><div class="tf e-blur" style="--d:.7s">“Dom não se cobra.”</div></div>
+    <div class="bloco">
+      <div class="step"><div class="rot">Héstia na sombra, por excesso</div><div class="txt">Espiritualiza para não agir.</div></div>
+      <div class="step" style="margin-top:34px"><div class="rot">O que ela protege</div><div class="txt"><em>Não ser julgada. Não criar atrito.</em></div></div>
+    </div>
+    <svg class="corpinho step s-fade corpo" viewBox="0 0 200 500"><use href="#i-sil" class="sil"/><circle class="ponto" cx="100" cy="150" r="9"/><circle class="pulso" cx="100" cy="150" r="9"/><text x="100" y="530" text-anchor="middle" font-family="Segoe UI,Arial" font-size="24" fill="#6A343D">coração</text></svg>
+  </div>
+  <aside class="notes"><b>⏱ 0:50 · Yasnnajára.</b> Dor da Claudia: culpa ao cobrar, voto de pobreza, a crença herdada de que dom espiritual não se cobra. A forma-pensamento (a nuvem cinza, mesma linguagem visual da Claudia) é "dom não se cobra". <b>Clique:</b> quem alimenta: Héstia por excesso, a que se recolhe e espiritualiza ("está tudo bem, é o processo") para não ter de se posicionar. <b>Clique:</b> o que ela protege. <b>Clique:</b> no biômetro da Claudia, o coração: servir sem receber, desconto, atender de graça.</aside>
+</section>
+
+<!-- Pilar 2 -->
+<section class="slide sombra-excesso" data-theme="papel" data-field="luz" data-trans="wipe" data-part="Pilar 2 · Limites">
+  <div class="pilar">
+    <img class="deusa e-left" style="--d:.3s" src="assets/deusas/demeter-corpo.webp" alt="">
+    <div class="cab"><div class="kicker e-fade">Pilar 2 · Limites</div></div>
+    <div class="papelzinho"><div class="tf e-blur" style="--d:.7s">“Se eu não fizer, ninguém faz.”</div></div>
+    <div class="bloco">
+      <div class="step"><div class="rot">Deméter na sombra, por excesso</div><div class="txt">Cuida de todas. Ninguém cuida dela.</div></div>
+      <div class="step" style="margin-top:34px"><div class="rot">O que ela protege</div><div class="txt"><em>Pertencer. Não parecer egoísta.</em></div></div>
+    </div>
+    <svg class="corpinho step s-fade corpo" viewBox="0 0 200 500"><use href="#i-sil" class="sil"/><circle class="ponto" cx="72" cy="118" r="9"/><circle class="pulso" cx="72" cy="118" r="9"/><circle class="ponto" cx="128" cy="118" r="9"/><circle class="pulso" cx="128" cy="118" r="9"/><text x="100" y="530" text-anchor="middle" font-family="Segoe UI,Arial" font-size="24" fill="#6A343D">escápulas</text></svg>
+  </div>
+  <aside class="notes"><b>⏱ 0:50 · Yasnnajára.</b> Dor da Claudia: complexo de salvadora, estender a sessão, entregar além do combinado. Bolen põe o "sim instintivo" de quem não consegue dizer não em Deméter (p. 152) e escreve o "deixe-me fazer isso por você" (p. 153). <b>Clique:</b> quem alimenta. <b>Clique:</b> o que protege. <b>Clique:</b> no biômetro, as escápulas: carregar responsabilidades que não são suas.</aside>
+</section>
+
+<!-- Pilar 3 -->
+<section class="slide sombra-excesso" data-theme="papel" data-field="luz" data-trans="wipe" data-part="Pilar 3 · Autoridade">
+  <div class="pilar">
+    <img class="deusa e-left" style="--d:.3s" src="assets/deusas/atena-corpo.webp" alt="">
+    <div class="cab"><div class="kicker e-fade">Pilar 3 · Autoridade</div></div>
+    <div class="papelzinho"><div class="tf e-blur" style="--d:.7s">“Só mais um curso.”</div></div>
+    <div class="bloco">
+      <div class="step"><div class="rot">Atena na sombra, por excesso</div><div class="txt">A competência virou armadura.</div></div>
+      <div class="step" style="margin-top:34px"><div class="rot">O que ela protege</div><div class="txt"><em>Nunca ser pega despreparada.</em></div></div>
+    </div>
+    <svg class="corpinho step s-fade corpo" viewBox="0 0 200 500"><use href="#i-sil" class="sil"/><circle class="ponto" cx="100" cy="46" r="9"/><circle class="pulso" cx="100" cy="46" r="9"/><circle class="ponto" cx="100" cy="196" r="9"/><circle class="pulso" cx="100" cy="196" r="9"/><text x="100" y="530" text-anchor="middle" font-family="Segoe UI,Arial" font-size="24" fill="#6A343D">cabeça · plexo</text></svg>
+  </div>
+  <aside class="notes"><b>⏱ 0:50 · Yasnnajára.</b> Dor da Claudia: síndrome da eterna aprendiz, acumular formações como escudo; medo de errar e do julgamento. No método, a função protetora de Atena por excesso é exatamente "nunca ser pega desprevenida, exposta ou julgada incompetente". <b>Clique · Clique · Clique.</b> No biômetro: plexo solar (insegurança, eterna aprendiz) e cabeça (dúvida, não decidir). Se alguém da plateia citar o medo do julgamento: Perséfone por excesso ("que impressão eu causo?") também mora aqui.</aside>
+</section>
+
+<!-- Pilar 4 -->
+<section class="slide sombra-escassez" data-theme="papel" data-field="luz" data-trans="wipe" data-part="Pilar 4 · Visibilidade">
+  <div class="pilar">
+    <img class="deusa e-left" style="--d:.3s" src="assets/deusas/afrodite-corpo.webp" alt="">
+    <div class="cab"><div class="kicker e-fade">Pilar 4 · Visibilidade</div></div>
+    <div class="papelzinho"><div class="tf e-blur" style="--d:.7s">“Quem sou eu para aparecer?”</div></div>
+    <div class="bloco">
+      <div class="step"><div class="rot">Afrodite na sombra, por escassez</div><div class="txt">Veste-se para desaparecer.</div></div>
+      <div class="step" style="margin-top:34px"><div class="rot">O que ela protege</div><div class="txt"><em>Não ser julgada. Não ser exposta.</em></div></div>
+    </div>
+    <svg class="corpinho step s-fade corpo" viewBox="0 0 200 500"><use href="#i-sil" class="sil"/><circle class="ponto" cx="100" cy="92" r="9"/><circle class="pulso" cx="100" cy="92" r="9"/><circle class="ponto" cx="80" cy="380" r="9"/><circle class="pulso" cx="80" cy="380" r="9"/><circle class="ponto" cx="120" cy="380" r="9"/><circle class="pulso" cx="120" cy="380" r="9"/><text x="100" y="530" text-anchor="middle" font-family="Segoe UI,Arial" font-size="24" fill="#6A343D">garganta · joelhos</text></svg>
+  </div>
+  <i class="step ghost" data-add="acesa"></i>
+  <aside class="notes"><b>⏱ 0:50 · Yasnnajára.</b> Dor da Claudia: medo de se expor, vergonha de vender e ocupar espaço. Aqui a deusa está apagada (cinza): é sombra por escassez, a capacidade de se mostrar, de desejar e de criar ficou sem espaço. É o achado mais comum no público de 28 a 56 anos. <b>Cliques:</b> quem · o que protege · garganta (falar de si) e joelhos (paralisia, medo do próximo passo). <b>Último clique:</b> Afrodite acende. "E é ela que a gente vai acender."</aside>
+</section>
+
+<section class="slide" data-theme="papel" data-field="luz" data-trans="zoom" data-part="Quem alimenta">
+  <div class="abs" style="left:110px;top:60px"><div class="kicker e-fade">O biômetro e as deusas</div><h2 class="split" style="--d:.3s;margin-top:10px">O corpo mostra <em>onde</em>.</h2></div>
+  <div class="mapa"><svg class="corpo" viewBox="0 0 200 500">
+    <use href="#i-sil" class="sil"/>
+    <g class="step s-fade"><circle class="ponto" cx="100" cy="46" r="8"/><circle class="pulso" cx="100" cy="46" r="8"/><circle class="ponto" cx="100" cy="196" r="8"/><circle class="pulso" cx="100" cy="196" r="8"/></g>
+    <g class="step s-fade"><circle class="ponto" cx="100" cy="150" r="8"/><circle class="pulso" cx="100" cy="150" r="8"/></g>
+    <g class="step s-fade"><circle class="ponto" cx="72" cy="118" r="8"/><circle class="pulso" cx="72" cy="118" r="8"/><circle class="ponto" cx="128" cy="118" r="8"/><circle class="pulso" cx="128" cy="118" r="8"/></g>
+    <g class="step s-fade"><circle class="ponto" cx="100" cy="92" r="8"/><circle class="pulso" cx="100" cy="92" r="8"/><circle class="ponto" cx="80" cy="380" r="8"/><circle class="pulso" cx="80" cy="380" r="8"/><circle class="ponto" cx="120" cy="380" r="8"/><circle class="pulso" cx="120" cy="380" r="8"/></g>
+  </svg></div>
+  <div class="rotulo e-left" style="--d:.6s;left:200px;top:210px"><img src="assets/deusas/atena-corpo.webp" alt=""><div><small>cabeça · plexo solar</small>Atena</div></div>
+  <div class="rotulo e-left" style="--d:.8s;left:200px;top:470px"><img src="assets/deusas/hestia-corpo.webp" alt=""><div><small>coração</small>Héstia</div></div>
+  <div class="rotulo dir e-right" style="--d:1s;right:200px;top:210px"><img src="assets/deusas/demeter-corpo.webp" alt=""><div><small>escápulas</small>Deméter</div></div>
+  <div class="rotulo dir e-right" style="--d:1.2s;right:200px;top:470px"><img src="assets/deusas/afrodite-corpo.webp" alt=""><div><small>garganta · joelhos</small>Afrodite</div></div>
+  <aside class="notes"><b>⏱ 0:40 · Yasnnajára (ou as duas).</b> Resumo visual: o mapa do biômetro da Claudia com as quatro deusas. 4 cliques acendem os pontos de cada pilar. Frase: "A Claudia mede onde está no corpo. Eu pergunto quem está alimentando."</aside>
+</section>
+
+<section class="slide" data-theme="papel" data-field="luz" data-trans="rise" data-part="Quem alimenta">
+  <div class="abs" style="left:110px;top:60px;width:1380px">
+    <div class="kicker e-fade">A regra do eixo oposto</div>
+    <h2 class="split" style="--d:.3s;margin-top:10px">O excesso não se combate de frente.</h2>
+    <h2 class="step split gold" style="margin-top:6px">Acende-se a que ficou do outro lado.</h2>
+  </div>
+  <div class="balanca e-fade" style="--d:.6s">
+    <div class="poste"></div><div class="base"></div><div class="viga"></div>
+    <div class="prato e"><div class="fio"></div><img src="assets/deusas/demeter-corpo.webp" alt=""><div class="nm">Deméter</div><div class="st">em excesso</div></div>
+    <div class="prato d"><div class="fio"></div><img src="assets/deusas/artemis-corpo.webp" alt=""><div class="nm">Ártemis</div><div class="st">a que acende</div></div>
+  </div>
+  <i class="step ghost" data-add="equilibra"></i>
+  <aside class="notes"><b>⏱ 1:00 · Yasnnajára.</b> A regra central do método. Mandar a salvadora "cuidar menos" deixa um buraco. Em vez disso, desenvolve-se a capacidade do eixo oposto: Deméter em excesso pede Ártemis (um caminho próprio, um alvo seu). A Bolen pede as duas coisas juntas: "abrir mão e deixar crescer" e ter uma vida própria (p. 155–156). <b>Clique:</b> a frase. <b>Clique:</b> Ártemis acende e a balança se equilibra.</aside>
+</section>
+
+<section class="slide" data-theme="papel" data-field="luz" data-trans="zoom" data-part="Do campo ao comportamento">
+  <div class="janela">
+    <div class="luzj"><div class="tijolos"><span style="--k:0"></span><span style="--k:1"></span><span style="--k:2"></span><span style="--k:3"></span><span style="--k:4"></span><span style="--k:5"></span></div></div>
+    <div class="folha e"></div><div class="folha d"></div>
+  </div>
+  <div class="lado-e step" data-add="aberta"><small>a radiestesia</small>abre a <em>janela</em>.</div>
+  <div class="lado-d step" data-add="constroi"><small>o comportamento</small>constrói <em>dentro</em> dela.</div>
+  <aside class="notes"><b>⏱ 1:00 · Yasnnajára (mecanismo da trilha dupla).</b> <b>Clique 1:</b> "A radiestesia abre a janela." (a janela se abre e entra luz). <b>Clique 2:</b> "O comportamento constrói dentro dela." (tijolos caem e se empilham). "Limpar sem mudar: a forma volta, porque a mesma deusa continua alimentando. Mudar sem limpar: esforço seco, que a gente larga na terceira semana. As duas juntas: é o nosso protocolo."</aside>
+</section>
+
+<!-- =====================================================
+     PARTE 3 — O PROTOCOLO (AS DUAS)
+     ===================================================== -->
+<section class="slide" data-theme="papel" data-field="ouro" data-trans="iris" data-part="O protocolo">
+  <div class="abs" style="left:110px;top:70px"><div class="kicker e-fade">O protocolo</div><h2 class="split" style="--d:.3s;margin-top:10px">Três <em>tempos</em></h2></div>
+  <div class="tempos">
+    <div class="tempo step"><div class="c"><span class="num">1</span><svg class="pend"><use href="#i-pendulo"/></svg></div><h3>Medir</h3><div class="q">o biômetro</div><div class="p">onde está, antes e depois</div></div>
+    <div class="tempo step"><div class="c"><span class="num">2</span><svg style="animation:gira 8s linear infinite"><use href="#i-espiral"/></svg></div><h3>Limpar</h3><div class="q">os comandos</div><div class="p">dissolver o que se acumulou</div></div>
+    <div class="tempo step"><div class="c"><span class="num">3</span><svg style="animation:pisca 2s ease-in-out infinite"><use href="#i-chama"/></svg></div><h3>Acender</h3><div class="q">a deusa do outro lado</div><div class="p">um comportamento, sete dias</div></div>
+  </div>
+  <aside class="notes"><b>⏱ 0:40 · AS DUAS.</b> Visão geral. 1 e 2 são da Claudia (biômetro e comandos); 3 é da Yasnnajára (eixo oposto + experimento de 7 dias). "Não vamos explicar os nossos métodos inteiros: vamos entregar o protocolo para vocês usarem."</aside>
+</section>
+
+<section class="slide" data-theme="papel" data-field="luz" data-trans="rise" data-part="O protocolo · 1 Medir">
+  <div class="abs" style="left:110px;top:60px"><div class="kicker e-fade">1 · Medir</div><h2 class="split" style="--d:.3s;margin-top:10px">O <em>biômetro</em></h2></div>
+  <div class="dial">
+    <svg viewBox="0 0 1100 650">
+      <g fill="none" stroke="#A18753" stroke-width="2">
+        <path d="M100 600A450 450 0 0 1 1000 600" stroke-width="3"/>
+        <path d="M200 600A350 350 0 0 1 900 600" opacity=".5"/>
+        <path d="M550 600 100 600M550 600 160.3 375M550 600 325 210.3M550 600 550 150M550 600 775 210.3M550 600 939.7 375M550 600 1000 600" opacity=".45"/>
+      </g>
+      <g font-family="Georgia" font-size="27" fill="#30372F" text-anchor="middle">
+        <text x="190" y="500" transform="rotate(-75 190 500)">joelhos</text>
+        <text x="300" y="320" transform="rotate(-45 300 320)">plexo</text>
+        <text x="440" y="215" transform="rotate(-15 440 215)">coração</text>
+        <text x="660" y="215" transform="rotate(15 660 215)">escápulas</text>
+        <text x="800" y="320" transform="rotate(45 800 320)">garganta</text>
+        <text x="910" y="500" transform="rotate(75 910 500)">cabeça</text>
+      </g>
+    </svg>
+    <div class="pendulo" style="top:-60px;height:640px;--para:15deg"></div>
+    <img data-opcional="ph-bio" src="assets/img/biometro.png" style="display:none;position:absolute;inset:0;margin:auto;max-height:640px;max-width:100%;background:var(--papel)" alt="">
+  </div>
+  <i class="step ghost" data-add="parado"></i>
+  <div class="abs placeholder" id="ph-bio" style="right:60px;top:60px;width:440px;font-size:18px"><b>Para a Claudia</b>Este dial é provisório. Salve a imagem do seu biômetro como <code>assets/img/biometro.png</code> e ela aparece aqui sozinha.</div>
+  <aside class="notes"><b>⏱ 1:00 · Claudia.</b> [A Claudia explica como usar o biômetro dela, sem detalhar o método.] Medir também <b>antes e depois</b> da sessão: é a prova de resultado que responde ao "será que funciona?" (slide 22). O pêndulo balança; <b>clique</b> e ele para num setor (aqui, o coração), como numa medição real. <b>Atenção:</b> os setores e a ordem são provisórios, desenhados a partir do mapa que ela mandou (cabeça, garganta, coração, plexo, escápulas, joelhos). Trocar pela imagem real dela.</aside>
+</section>
+
+<section class="slide" data-theme="noite" data-field="ouro" data-trans="zoom" data-part="O protocolo · 2 Limpar">
+  <svg class="espiral" viewBox="0 0 100 100" style="stroke:#D9C38F;fill:none;stroke-width:.6"><use href="#i-espiral"/></svg>
+  <div class="abs" style="left:110px;top:60px"><div class="kicker e-fade">2 · Limpar</div><h2 class="split" style="--d:.3s;margin-top:10px">Os <em>comandos</em></h2></div>
+  <div class="center" style="position:relative;padding-top:80px">
+    <p class="lead step" style="font-style:italic;color:var(--papel)">[comando 1]</p>
+    <p class="lead step" style="font-style:italic;color:var(--papel)">[comando 2]</p>
+    <p class="lead step" style="font-style:italic;color:var(--papel)">[comando 3]</p>
+  </div>
+  <div class="abs placeholder" style="right:60px;bottom:40px;width:420px;font-size:18px;color:var(--ouro);border-color:var(--ouro)"><b>Para a Claudia</b>Faltam os comandos. Mande o texto e ele entra aqui, um por clique, girando com a espiral.</div>
+  <aside class="notes"><b>⏱ 1:00 · Claudia.</b> [Comandos de limpeza da Claudia. Ainda não recebemos o texto.] Fundo escuro e espiral girando: é o único momento escuro da parte final, para marcar a limpeza.</aside>
+</section>
+
+<section class="slide" data-theme="papel" data-field="ouro" data-trans="rise" data-part="O protocolo · 3 Acender">
+  <div class="center">
+    <div class="kicker e-fade">3 · Acender</div>
+    <h2 class="split" style="--d:.3s;margin-top:14px">Um comportamento. <em>Sete</em> dias.</h2>
+    <div class="dias e-up" style="--d:1s"><span style="--k:0"><b>1</b></span><span style="--k:1"><b>2</b></span><span style="--k:2"><b>3</b></span><span style="--k:3"><b>4</b></span><span style="--k:4"><b>5</b></span><span style="--k:5"><b>6</b></span><span style="--k:6"><b>7</b></span></div>
+    <div class="duas">
+      <div class="dor step s-left"><div class="pq">“Será que vale?”</div><p>Se perguntarem o valor, <b>então eu digo o preço inteiro e fico em silêncio.</b></p></div>
+      <div class="dor step s-right"><div class="pq">“Será que funciona?”</div><p>Se a sessão começar, <b>então eu peço uma nota de <span class="nums">0 a 10</span> para o incômodo dela, e repito no fim.</b></p></div>
+    </div>
+    <p class="step gold" style="font-size:44px;font-style:italic;margin:34px 0 0">Primeiro a prova. Depois a crença.</p>
+  </div>
+  <i class="step ghost" data-add="marca"></i>
+  <aside class="notes"><b>⏱ 1:00 · Yasnnajára.</b> As duas dores maiores da terapeuta: "será que o meu trabalho vale isso?" e "será que funciona?". Crença não se prescreve: o que se prescreve é um comportamento pequeno, que passe no teste da câmera, e a crença vem depois, com a prova. Experimento, e não meta: se não aconteceu, não é fracasso, é dado. <b>Clique 1:</b> "Será que vale?" (dizer o preço inteiro e aguentar o silêncio, sem desconto e sem explicação). <b>Clique 2:</b> "Será que funciona?" (nota de 0 a 10 que a própria cliente dá ao incômodo dela, no começo e no fim; em 7 dias ela tem a prova anotada). <b>Clique 3:</b> "Primeiro a prova. Depois a crença." <b>Clique 4:</b> os 7 dias se marcam. Regra do método: escolher UMA das duas. Outros exemplos se perguntarem: Pilar 2 "Se a sessão chegar ao horário combinado, então eu encerro". Pilar 4 "Se for terça, então eu posto um story falando do meu trabalho, sem refazer".</aside>
+</section>
+
+<section class="slide" data-theme="noite" data-field="limpo" data-trans="iris" data-part="">
+  <div class="raios"></div>
+  <div class="abs" style="left:0;right:0;top:80px;text-align:center">
+    <h1 class="split" style="--d:.3s;font-size:84px">Que formas você vai criar<br><em>a partir de hoje</em>?</h1>
+  </div>
+  <div class="qrs">
+    <div class="qrcard e-up" style="--d:2s">
+      <div class="qr"><img data-opcional="ph-qr-claudia" src="assets/img/qr-claudia.svg" alt=""><div class="qr-ph" id="ph-qr-claudia">QR<br>da Claudia</div></div>
+      <div><div class="qn">Claudia</div><div class="qo">[o que ela oferece]</div><div class="qa">[@ da Claudia]</div></div>
+    </div>
+    <div class="qrcard e-up" style="--d:2.3s">
+      <div class="qr"><img src="assets/img/qr-yasnnajara.svg" alt="QR do Mapa das Sete"></div>
+      <div><div class="qn">Yasnnajára Alves</div><div class="qo">Mapa das Sete: qual deusa está na sua sombra?</div><div class="qa">@yasnnajara_alves</div></div>
+    </div>
+  </div>
+  <aside class="notes"><b>⏱ 0:30 · AS DUAS.</b> Devolve a pergunta do início (as formas-pensamento) com a resposta da segunda parte. Os dois QR ficam na tela durante as perguntas: cada uma apresenta o seu em uma frase. Yasnnajára: "Quem quiser saber qual deusa está na sua sombra hoje, o Mapa das Sete é gratuito e leva poucos minutos." Claudia: [a oferta dela]. Agradecimento.</aside>
+</section>
+
+<section class="slide" data-theme="papel" data-field="luz" data-trans="fade" data-part="Referências">
+  <div class="kicker">Referências</div>
+  <div class="refs">
+    <p><b>Besant, A.; Leadbeater, C. W.</b> <i>Formas de Pensamento</i> (Thought-Forms, 1901).</p>
+    <p><b>Powell, A. E.</b> <i>O Corpo Mental</i> e <i>O Corpo Astral</i> (1927).</p>
+    <p><b>Hahnemann, S.</b> <i>As Doenças Crônicas</i> (1828).</p>
+    <p><b>Xavier, F. C. (André Luiz).</b> <i>Missionários da Luz</i> (1945) e <i>Evolução em Dois Mundos</i> (1958).</p>
+    <p><b>Lacerda de Azevedo, J.</b> <i>Espírito/Matéria: Novos Horizontes para a Medicina</i> (1988).</p>
+    <p><b>Brennan, B. A.</b> <i>Mãos de Luz</i>.</p>
+    <p><b>Bolen, J. S.</b> <i>As Deusas e a Mulher</i> (1984).</p>
+    <p><b>Alves, Y.</b> Método das Deusas (metodologia autoral).</p>
+  </div>
+  <aside class="notes">Slide de apoio para perguntas. Não precisa apresentar.</aside>
+</section>
+
+</div></div>
+
+<div id="notas"></div>
+<div id="preto"></div>
+<div id="gire">Deite o celular para ver a apresentação ↻</div>
+<div id="ajuda">→ avança · ← volta · F tela cheia · N notas · B tela preta</div>
+<script src="assets/deck.js"></script>
+</body>
+</html>
