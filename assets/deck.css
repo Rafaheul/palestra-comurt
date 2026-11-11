@@ -505,3 +505,23 @@ html.estatico *,html.estatico *::before,html.estatico *::after{animation-delay:-
 /* celular: sem dica de teclado */
 @media (pointer:coarse){#ajuda{display:none}}
 body.toque #ajuda{display:none}
+
+/* ===== MODO LEVE (celular/tablet): sem desfoques e brilhos calculados ao vivo ===== */
+html.leve .step{filter:none}
+html.leve .step:not(.on){filter:none}
+html.leve .slide.active .split .w,html.leve .step.on .split .w,html.leve .step.on.split .w{animation-name:eWordLeve}
+@keyframes eWordLeve{from{opacity:0;transform:translateY(.45em)}to{opacity:1;transform:none}}
+html.leve .slide.active .e-blur{animation-name:eFade}
+html.leve .slide.active.tr-zoom,html.leve .slide.active.tr-rise,html.leve .slide.active.tr-sink{animation-name:trFade}
+html.leve .slide.leaving,html.leve .slide.leaving.out-up{animation:trFadeOut .7s ease both}
+@keyframes trFadeOut{from{opacity:1}to{opacity:0}}
+html.leve .fila7 img{filter:none}
+html.leve .est.integrada img{filter:none}
+html.leve .est.hiper img{filter:saturate(1.6);animation:none}
+html.leve .sombra-excesso .deusa{filter:saturate(1.5)}
+html.leve .slide.acesa .deusa{filter:none!important}
+html.leve .balanca .prato.e img{filter:saturate(1.5)}
+html.leve .slide.equilibra .balanca .prato.d img{filter:none}
+html.leve .borrada{filter:none;opacity:.45;animation:none}
+html.leve .figura-blend{filter:none}
+html.leve .est.hiper{box-shadow:inset 0 0 0 3px rgba(106,52,61,.55)}

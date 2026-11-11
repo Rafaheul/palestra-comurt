@@ -1,6 +1,9 @@
 /* Palestra COMURT Diamante — motor do deck (sem biblioteca externa, roda offline) */
 (function(){
   if(/estatico/.test(location.search)) document.documentElement.classList.add('estatico');
+  // modo leve: celular e tablet (o Safari do iPhone fecha a aba se a página pede memória demais)
+  const LEVE = /leve/.test(location.search) || matchMedia('(pointer:coarse)').matches || /iPhone|iPad|iPod/.test(navigator.userAgent);
+  if(LEVE) document.documentElement.classList.add('leve');
   const stage = document.getElementById('stage');
   const slides = [...document.querySelectorAll('.slide')];
   const progress = document.getElementById('progress');
@@ -80,11 +83,12 @@
       atual.c=atual.c.map((v,i)=>lerp(v,alvo.c[i],t)); atual.a=lerp(atual.a,alvo.a,t);
       atual.s=[lerp(atual.s[0],alvo.s[0],t),lerp(atual.s[1],alvo.s[1],t)];
       atual.vy=lerp(atual.vy,alvo.vy,t); atual.jit=lerp(atual.jit,alvo.jit,t); atual.glow=lerp(atual.glow,alvo.glow,t);
-      if(P.length<alvo.n && Math.random()<.5) P.push(novo());
-      if(P.length>alvo.n && Math.random()<.5) P.pop();
+      const nAlvo=LEVE?Math.round(alvo.n*.5):alvo.n;
+    if(P.length<nAlvo && Math.random()<.5) P.push(novo());
+      if(P.length>nAlvo && Math.random()<.5) P.pop();
       ctx.clearRect(0,0,1600,900);
       const [r,g,b]=atual.c.map(Math.round);
-      ctx.shadowColor=`rgba(${r},${g},${b},.9)`; ctx.shadowBlur=atual.glow;
+      ctx.shadowColor=`rgba(${r},${g},${b},.9)`; ctx.shadowBlur=LEVE?0:atual.glow;
       for(const p of P){
         p.ph+=.02; p.life=Math.min(1,p.life+.01);
         p.x+=Math.sin(p.ph)*atual.jit; p.y+=atual.vy*(.5+p.r);
